@@ -3,6 +3,7 @@
 
     angular
         .module('app', ['ui.router', 'toastr'])
+        .value('apiUrl', 'http://localhost:54591/api/')
         .config(appConfig);
 
         appConfig.$inject = ["$urlRouterProvider", "$stateProvider"];
@@ -14,7 +15,7 @@
             .state("dashboard", {
                 url: '/dashboard', 
                 controller: "DashboardCtrl as dashboard",
-                templateUrl: 'app/dashboard/dashboard.html'
+                templateUrl: 'js/dashboard/dashboard.html'
             })
             .state('student', {
                 url: '/student',
@@ -24,13 +25,13 @@
                 .state('student.grid', {
                     url: '/grid',
                     controller: 'StudentGridCtrl as studentGrid',
-                    templateUrl: 'app/student/student.grid.html'
+                    templateUrl: 'js/student/student.grid.html'
 
                 })
                 .state('student.detail', {
                     url: '/detail/:studentId',
-                    templateUrl: 'app/student/student.detail.html',
-                    controller: 'StudentDetailCtrl as studentDetail'
+                    controller: 'StudentDetailCtrl as studentDetail',
+                    templateUrl: 'src/js/student/student.detail.html'
                 })
             .state('project', {
                 url: '/project',
@@ -40,13 +41,13 @@
                 .state('project.grid', {
                     url: '/grid',
                     controller: 'ProjectGridCtrl as projectGrid',
-                    templateUrl: 'app/project/project.grid.html'
+                    templateUrl: 'js/project/project.grid.html'
 
                 })
                 .state('project.detail', {
                     url: '/detail/:projectId',
-                    templateUrl: 'app/project/project.detail.html',
-                    controller: 'ProjectDetailCtrl as projectDetail'
+                    controller: 'ProjectDetailCtrl as projectDetail',
+                    templateUrl: 'js/project/project.detail.html'
                 });
         }
 })();

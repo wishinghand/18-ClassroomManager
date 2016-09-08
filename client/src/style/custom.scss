@@ -1,0 +1,21 @@
+//element overrides
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+a{
+  color: white;
+  decoration: underlined;
+}
+
+// custom styles
+.customFooter{
+  margin-bottom: 0em !important;
+  margin-top: 0em !important;
+}
