@@ -31,7 +31,7 @@
                 .state('student.detail', {
                     url: '/detail/:studentId',
                     controller: 'StudentDetailCtrl as studentDetail',
-                    templateUrl: 'src/js/student/student.detail.html'
+                    templateUrl: 'js/student/student.detail.html'
                 })
             .state('project', {
                 url: '/project',
