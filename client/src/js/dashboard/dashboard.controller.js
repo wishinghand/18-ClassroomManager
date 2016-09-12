@@ -5,18 +5,43 @@
         .module('app')
         .controller('DashboardCtrl', DashboardCtrl);
 
-    DashboardCtrl.$inject = ['$stateParams', '$state'];
+    DashboardCtrl.$inject = ['$stateParams', '$state', 'StudentFactory', 'ProjectFactory', 'AssignmentFactory'];
 
     /* @ngInject */
-    function DashboardCtrl($stateParams, $state) {
+    function DashboardCtrl($stateParams, $state, StudentFactory, ProjectFactory, AssignmentFactory) {
         var vm = this;
         vm.title = 'DashboardCtrl';
 
-        activate();
+        getStudentsDash();
+        getProjectsDash();
+        getAssignmentsDash();
+
 
         ////////////////
+        ///
+    
 
-        function activate() {
+        function getStudentsDash() {
+            StudentFactory.read().then(
+                function(students){
+                    vm.students = students;
+                });
         }
+
+        function getProjectsDash(){
+            ProjectFactory.read().then(
+                function(projects){
+                    vm.projects = projects;
+                });
+        }
+
+        function getAssignmentsDash(){
+            AssignmentFactory.read().then(
+                function(assignments){
+                    vm.assignments = assignments;
+                });
+        }
+
+
     }
 })();
