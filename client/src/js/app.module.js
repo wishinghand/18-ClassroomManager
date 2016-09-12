@@ -6,15 +6,15 @@
         .value('apiUrl', 'http://localhost:54591/api/')
         .config(appConfig);
 
-        appConfig.$inject = ["$urlRouterProvider", "$stateProvider"];
+        appConfig.$inject = ['$urlRouterProvider', '$stateProvider'];
 
         function appConfig($urlRouterProvider, $stateProvider) {
             $urlRouterProvider.otherwise('dashboard');
 
             $stateProvider
-            .state("dashboard", {
+            .state('dashboard', {
                 url: '/dashboard', 
-                controller: "DashboardCtrl as dashboard",
+                controller: 'DashboardCtrl as dashboard',
                 templateUrl: 'js/dashboard/dashboard.html'
             })
             .state('student', {
