@@ -12,6 +12,7 @@
         var service = {
            create: create,
            read: read,
+           readById: readById,
            update: update,
            delete: deleteStudent
         };
@@ -22,7 +23,7 @@
         function create(student){
             var defer = $q.defer();
 
-            $http.post(apiUrl + 'student', student)
+            $http.post(apiUrl + 'students', student)
             .then(
               function(response) {
                 defer.resolve(response.data);
@@ -47,11 +48,24 @@
 
             return defer.promise;
         }
+
+        function readById(student){
+            var defer = $q.defer();
+
+            $http.get( apiUrl + 'students/' + student)
+            .then(function(response){
+                defer.resolve(response.data);
+            },function(response) {
+                defer.reject("Todo not found");
+            });
+
+            return defer.promise;
+        }
         
         function update(student){
             var defer = $q.defer();
 
-            $http.put(apiUrl + 'student/' + student.id, student)
+            $http.put(apiUrl + 'students/' + student.id, student)
             .then(function(response){
                 defer.resolve(response.data);
             },function(response) {
@@ -64,7 +78,7 @@
         function deleteStudent(student){
             var defer = $q.defer();
 
-            $http.delete(apiUrl + 'student/' + student.id)
+            $http.delete(apiUrl + 'students/' + student.studentId)
             .then(
               function(response) {
                 defer.resolve(response.data);

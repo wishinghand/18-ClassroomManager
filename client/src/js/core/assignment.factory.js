@@ -51,7 +51,7 @@
         function update(todo){
             var defer = $q.defer();
 
-            $http.put(apiUrl + 'assignment/' + todo.id, todo)
+            $http.put(apiUrl + 'assignments/' + todo.id, todo)
             .then(function(response){
                 defer.resolve(response.data);
             },function(response) {
@@ -64,7 +64,7 @@
         function deleteTodo(todo){
             var defer = $q.defer();
 
-            $http.delete(apiUrl + 'assignment/' + todo.id)
+            $http.delete(apiUrl + 'assignments/' + todo.id)
             .then(
               function(response) {
                 defer.resolve(response.data);
