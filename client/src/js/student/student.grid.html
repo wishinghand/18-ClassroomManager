@@ -1,31 +1,71 @@
-<div class="ui card fluid">
-  <div class="content">
-    <div class="header">List of Students</div>
+<div class="ui container">
+  <div class="ui card fluid">
+    <div class="content">
+      <div class="header">
+        List of Students
+        <button class="ui blue button right floated" ng-click="studentGrid.addStudentModal();">Add Student</button>
+      </div>
+
+    </div>
+    <div class="content">
+      <table class="ui very basic celled striped table red">
+        <thead>
+          <tr>
+              <th class="wide ten">Student Name</th>
+              <th class="wide three">Assignments</th>
+              <th class="wide three">Actions</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr ng-repeat="student in studentGrid.students">
+            <td>
+              <h4 class="ui header">
+                <div class="content">
+                  {{student.firstName}} {{student.lastName}}
+                </div>
+              </h4>
+            </td>
+            <td>
+              {{student.assignments.length}}
+            </td>
+            <td class="ui buttons">
+              <a ui-sref="student.detail({studentId:student.studentId})"><button class="ui button teal">Edit <i class="pencil icon"></i></button></a>
+              <div class="or"></div>
+              <button class="ui button red" ng-click="studentGrid.deleteStudent(student);">Delete <i class="trash icon"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+</div>
+
+<div class="ui fullscreen modal">
+  <div class="header">Add a Student</div>
   <div class="content">
-    <table class="ui very basic celled striped selectable table red">
-      <thead>
-        <tr>
-            <th class="wide ten">Student Name</th>
-            <th class="wide six">Assignments</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <tr>
-          <td>
-            <h4 class="ui  header">
-              <div class="content">
-                {{student.grid.name}}
-              </div>
-            </h4>
-          </td>
-          <td>
-            {{0}}
-          </td>
-        </tr>
-     
-      </tbody>
-    </table>
+    <form class="ui form">
+        <label>Name</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="text" name="" placeholder="First Name" ng-model="studentGrid.student.firstName">
+          </div>
+
+          <div class="field">
+            <input type="text" name="" placeholder="Last Name" ng-model="studentGrid.student.lastName">
+          </div>
+        </div>
+
+        <div class="two fields">
+          <div class="field">
+            <label for="">Email Address</label>
+            <input type="email" name="" placeholder="me@email.com" ng-model="studentGrid.student.emailAddress">
+          </div>
+          <div class="field">
+            <label for="">Telephone</label>
+            <input type="text" name="" placeholder="777.555.111" ng-model="studentGrid.student.telephone">
+          </div>
+        </div>
   </div>
+  <button class="ui button primary" ng-click="studentGrid.addStudent();">Add Student</button>
 </div>

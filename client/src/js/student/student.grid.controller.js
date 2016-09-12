@@ -5,18 +5,60 @@
         .module('app')
         .controller('StudentGridCtrl', StudentGridCtrl);
 
-    StudentGridCtrl.$inject = ['$stateParams', "$state"];
+    StudentGridCtrl.$inject = ['$stateParams', '$state', 'StudentFactory'];
 
     /* @ngInject */
-    function StudentGridCtrl($stateParams, $state) {
+    function StudentGridCtrl($stateParams, $state, StudentFactory) {
         var vm = this;
-        vm.title = 'StudentGridCtrl';
+        vm.student = {};
+        vm.students = [];
+        vm.addStudent = addStudent;
+        vm.addStudentModal = addStudentModal;
+        vm.deleteStudent = deleteStudent;
+        vm.editStudent = editStudent;
 
-        activate();
+        getStudents();
 
         ////////////////
 
-        function activate() {
+        function addStudent(){
+            StudentFactory.create(vm.student).then(
+                function(student){
+                    $('.fullscreen.modal').modal('hide');
+                    vm.students.push(student);
+                });
+        }
+
+        function addStudentModal(){
+            $('.fullscreen.modal').modal('show');
+        }
+
+        function getStudents() {
+            StudentFactory.read().then(
+                function(students){
+                    vm.students = students;
+                });
+        }
+
+        function deleteStudent(student) {
+          if (confirm("Are you sure you want to remove this student?")) {
+            // debugger;
+            StudentFactory.delete(student).then(
+              function() {
+                var index = vm.students.indexOf(student);
+                vm.students.splice(index, 1);
+              }
+            );
+          }
+        }
+
+         function editStudent(student) {
+            // debugger;
+          StudentFactory.update(student).then(
+            function() {
+              student.edit = false;  
+            }
+          );
         }
     }
 })();
