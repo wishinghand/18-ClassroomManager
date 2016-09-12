@@ -38,11 +38,11 @@
         function read(){
             var defer = $q.defer();
 
-            $http.get( apiUrl + 'assignment')
+            $http.get( apiUrl + 'assignments')
             .then(function(response){
                 defer.resolve(response.data);
             },function(response) {
-                defer.reject("Todo not found");
+                defer.reject("Assignment not found");
             });
 
             return defer.promise;

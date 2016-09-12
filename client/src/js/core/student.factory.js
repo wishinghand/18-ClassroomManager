@@ -13,16 +13,16 @@
            create: create,
            read: read,
            update: update,
-           delete: deleteTodo
+           delete: deleteStudent
         };
         return service;
 
         ////////////////
 
-        function create(todo){
+        function create(student){
             var defer = $q.defer();
 
-            $http.post(apiUrl + 'student', todo)
+            $http.post(apiUrl + 'student', student)
             .then(
               function(response) {
                 defer.resolve(response.data);
@@ -38,7 +38,7 @@
         function read(){
             var defer = $q.defer();
 
-            $http.get( apiUrl + 'student')
+            $http.get( apiUrl + 'students')
             .then(function(response){
                 defer.resolve(response.data);
             },function(response) {
@@ -48,10 +48,10 @@
             return defer.promise;
         }
         
-        function update(todo){
+        function update(student){
             var defer = $q.defer();
 
-            $http.put(apiUrl + 'student/' + todo.id, todo)
+            $http.put(apiUrl + 'student/' + student.id, student)
             .then(function(response){
                 defer.resolve(response.data);
             },function(response) {
@@ -61,10 +61,10 @@
             return defer.promise;
         }
         
-        function deleteTodo(todo){
+        function deleteStudent(student){
             var defer = $q.defer();
 
-            $http.delete(apiUrl + 'student/' + todo.id)
+            $http.delete(apiUrl + 'student/' + student.id)
             .then(
               function(response) {
                 defer.resolve(response.data);
