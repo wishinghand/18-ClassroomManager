@@ -65,7 +65,7 @@
         function update(student){
             var defer = $q.defer();
 
-            $http.put(apiUrl + 'students/' + student.id, student)
+            $http.put(apiUrl + 'students/' + student.studentId, student)
             .then(function(response){
                 defer.resolve(response.data);
             },function(response) {
