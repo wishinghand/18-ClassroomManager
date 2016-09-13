@@ -23,7 +23,7 @@ gulp.task('clean', function(){
 gulp.task('concatJs', function(){
     return gulp.src([ 'node_modules/angular/angular.js', 'node_modules/angular-ui-router/release/angular-ui-router.js', 'node_modules/angular-toastr/dist/angular-toastr.js', 'node_modules/angular-toastr/dist/angular-toastr.tpls.js', './src/**/*.module.js', './src/**/*.js'])
     .pipe(concat('build.js'))
-    .pipe(gulp.dest('./build/'))
+    .pipe(gulp.dest('./build/'));
 });
 
 /**CSS gulp tasks*****************************************************************/
@@ -36,7 +36,7 @@ gulp.task('compileSass', function(){
 });
 
 gulp.task('inject', function(){
-    var sources = gulp.src(['./build/*.css', './build/*.js'], {read: false})
+    var sources = gulp.src(['./build/*.css', 'node_modules/angular/angular.js', 'node_modules/angular-ui-router/release/angular-ui-router.js', 'node_modules/angular-toastr/dist/angular-toastr.js', 'node_modules/angular-toastr/dist/angular-toastr.tpls.js', './src/**/*.module.js', './src/**/*.js'], {read: false});
     return gulp.src('./src/index.html')
         .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest('./src/'));
@@ -47,7 +47,7 @@ gulp.task('connect', function(){
         root: './',
         livereload: true,
         port: 8889
-    })
+    });
 });
 
 gulp.task('minifyJs', function (cb) {
@@ -70,17 +70,17 @@ gulp.task('watch', function() {
 //...and reloads
 gulp.task('js', function() {
     gulp.src(jsSources)
-        .pipe(connect.reload())
+        .pipe(connect.reload());
 });
 
 gulp.task('html', function() {
     gulp.src(htmlSources)
-        .pipe(connect.reload())
+        .pipe(connect.reload());
 });
 
 gulp.task('css', function() {
     gulp.src(cssSources)
-        .pipe(connect.reload())
+        .pipe(connect.reload());
 });
 
 gulp.task('uncss', function() {
@@ -92,7 +92,7 @@ gulp.task('uncss', function() {
 });
 
 gulp.task('serve', function(done) {
-    runSequence('clean', 'concatJs', 'compileSass', 'inject', 'connect', 'watch', function() {
+    runSequence('clean', 'compileSass', 'inject', 'connect', 'watch', function() {
         done();
     });
 });
