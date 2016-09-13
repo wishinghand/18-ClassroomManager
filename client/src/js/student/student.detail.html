@@ -1,9 +1,96 @@
-<div class="ui card fluid">
-  <div class="content">
-    <div class="header orange">Assign a Project</div>
+<div class="ui container">
+  <div class="ui card fluid">
+    <div class="content">
+      <div class="ui header orange label">Assign a Project</div>
+    </div>
+    <div class="content">
+      <h2>Select a Project</h2>
+      <div class="ui fluid action input">
+      <!-- add ng-options -->
+        <select name="" id="" class="ui dropdown fluid" ></select>
+        <button class="ui button primary" ng-click="">Assign</button>
+      </div>
+    </div>
   </div>
-  <div class="content">
-    <h2>Select a Project</h2>
-    
+
+
+<!-- //////////////////////////////////////////////////// -->
+
+  <div class="ui card fluid">
+    <div class="content">
+      <div class="header orange">Assignments</div>
+    </div>
+    <div class="content">
+      <table class="ui very basic celled striped table red">
+        <thead>
+          <tr>
+              <th class="wide five">Name</th>
+              <th class="wide five">Grade</th>
+          </tr>
+        </thead>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+<!-- //////////////////////////////////////////////////// -->
+
+  <div class="ui card fluid">
+    <div class="content">
+      <div class="header orange">Edit Student Info</div>
+    </div>
+    <div class="content">
+      <form class="ui form">
+        <label>Name</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="text" ng-required="required" placeholder="{{studentDetail.studentCurrent.firstName}}" ng-model="studentDetail.studentNew.firstName">
+          </div>
+
+          <div class="field">
+            <input type="text" ng-required="required" placeholder="{{studentDetail.studentCurrent.lastName}}" ng-model="studentDetail.studentNew.lastName">
+          </div>
+        </div>
+
+        <div class="two fields">
+          <div class="field">
+            <label for="">Email Address</label>
+            <input type="email" ng-required="required" placeholder="{{studentDetail.studentCurrent.emailAddress}}" ng-model="studentDetail.studentNew.emailAddress">
+          </div>
+          <div class="field">
+            <label for="">Telephone</label>
+            <input type="text" ng-required="required" placeholder="{{studentDetail.studentCurrent.telephone}}" ng-model="studentDetail.studentNew.telephone">
+          </div>
+        </div>
+        <button class="ui button teal" ng-model="required" ng-click="studentDetail.editStudent();">Change Student Info</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="ui basic modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Student Information Changed
+  </div>
+  <div class="image content">
+    <div class="image">
+      <i class="archive icon"></i>
+    </div>
+    <div class="description">
+      <p>This student's information has been updated.</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="fluid ui inverted buttons">
+      <div class="ui ok green basic inverted button">
+        <i class="checkmark icon"></i>
+        Ok
+      </div>
+    </div>
   </div>
 </div>
