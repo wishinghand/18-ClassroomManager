@@ -6,8 +6,7 @@
     <div class="content">
       <h2>Select a Project</h2>
       <div class="ui fluid action input">
-      <!-- add ng-options -->
-        <select name="" id="" class="ui dropdown fluid" ></select>
+        <select name="" id="" class="ui dropdown fluid" ng-options="p.projectId as p.name for p in studentDetail.projects" ng-model="StudentDetail.projectId"></select>
         <button class="ui button primary" ng-click="">Assign</button>
       </div>
     </div>

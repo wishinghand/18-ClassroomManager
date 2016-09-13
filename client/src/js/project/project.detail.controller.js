@@ -5,16 +5,17 @@
         .module('app')
         .controller('ProjectDetailCtrl', ProjectDetailCtrl);
 
-    ProjectDetailCtrl.$inject = ['$stateParams', '$state', 'ProjectFactory'];
+    ProjectDetailCtrl.$inject = ['$stateParams', '$state', 'ProjectFactory', 'StudentFactory'];
 
     /* @ngInject */
-    function ProjectDetailCtrl($stateParams, $state, ProjectFactory) {
+    function ProjectDetailCtrl($stateParams, $state, ProjectFactory, StudentFactory) {
         var vm = this;
         vm.title = 'ProjectDetailCtrl';
         vm.projectCurrent = {};
         vm.editProject = editProject;
 
         getProjectDetail();
+        getStudents();
 
         ////////////////
 
@@ -23,6 +24,13 @@
             ProjectFactory.readById(projectId).then(
                 function(project){
                     vm.projectCurrent = project;
+                });
+        }
+
+        function getStudents(){
+            StudentFactory.read().then(
+                function (students) {
+                    vm.students = students;
                 });
         }
 

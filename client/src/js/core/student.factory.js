@@ -43,7 +43,7 @@
             .then(function(response){
                 defer.resolve(response.data);
             },function(response) {
-                defer.reject("Todo not found");
+                defer.reject("Students not found");
             });
 
             return defer.promise;
@@ -56,7 +56,7 @@
             .then(function(response){
                 defer.resolve(response.data);
             },function(response) {
-                defer.reject("Todo not found");
+                defer.reject("Student not found");
             });
 
             return defer.promise;

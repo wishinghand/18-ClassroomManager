@@ -10,7 +10,6 @@
     /* @ngInject */
     function ProjectGridCtrl($stateParams, $state, ProjectFactory) {
         var vm = this;
-        vm.title = 'ProjectGridCtrl';
         vm.project = {};
         vm.projects = [];
         vm.addProject = addProject;
