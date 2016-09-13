@@ -1,31 +1,61 @@
-<div class="ui card fluid">
-  <div class="content">
-    <div class="header">List of Projects</div>
+<div class="ui container">
+  <div class="ui card fluid">
+    <div class="content">
+      <div class="header">
+        List of Projects
+        <button class="ui blue button right floated" ng-click="projectGrid.addProjectModal();">Add Project</button>
+      </div>
+
+    </div>
+    <div class="content">
+      <table class="ui very basic celled striped table red">
+        <thead>
+          <tr>
+              <th class="wide ten">Project Name</th>
+              <th class="wide three">Assignments</th>
+              <th class="wide three">Actions</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr ng-repeat="project in projectGrid.projects">
+            <td>
+              <h4 class="ui header">
+                <div class="content">
+                  {{project.name}}
+                </div>
+              </h4>
+            </td>
+            <td>
+              {{project.length}}
+            </td>
+            <td class="ui buttons">
+              <a ui-sref="project.detail({projectId:project.projectId})"><button class="ui button teal">Edit <i class="pencil icon"></i></button></a>
+              <div class="or"></div>
+              <button class="ui button red" ng-click="projectGrid.deleteProject(project);">Delete <i class="trash icon"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+</div>
+
+<div class="ui fullscreen modal">
+  <div class="header">Add a Project</div>
   <div class="content">
-    <table class="ui very basic celled striped selectable table red">
-      <thead>
-        <tr>
-            <th class="wide ten">Project Name</th>
-            <th class="wide six">Assigned Count</th>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <tr>
-          <td>
-            <h4 class="ui  header">
-              <div class="content">
-                {{project.grid.name}}
-              </div>
-            </h4>
-          </td>
-          <td>
-            {{0}}
-          </td>
-        </tr>
-     
-      </tbody>
-    </table>
+    <form class="ui form">
+        <label>Name</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="text" name="" placeholder="Name" ng-model="projectGrid.project.name">
+          </div>
+
+          <div class="field">
+            <input type="text" name="" placeholder="Description" ng-model="projectGrid.project.description">
+          </div>
+        </div>
+
   </div>
+  <button class="ui button primary" ng-click="projectGrid.addProject();">Add Project</button>
 </div>

@@ -12,17 +12,18 @@
         var service = {
            create: create,
            read: read,
+           readById: readById,
            update: update,
-           delete: deleteTodo
+           delete: deleteProject
         };
         return service;
 
         ////////////////
 
-        function create(todo){
+        function create(project){
             var defer = $q.defer();
 
-            $http.post(apiUrl + 'projects', todo)
+            $http.post(apiUrl + 'projects', project)
             .then(
               function(response) {
                 defer.resolve(response.data);
@@ -47,11 +48,27 @@
 
             return defer.promise;
         }
+
+        function readById(project){
+            var defer = $q.defer();
+            
+            $http.get(apiUrl + 'projects/' + project)
+            .then(function(response) {
+                    defer.resolve(response.data);
+                },
+                function(error) {
+                    console.log(error);
+                    defer.reject(error);
+                }
+            );
+            
+            return defer.promise;
+        }
         
-        function update(todo){
+        function update(project){
             var defer = $q.defer();
 
-            $http.put(apiUrl + 'projects/' + todo.id, todo)
+            $http.put(apiUrl + 'projects/' + project.projectId, project)
             .then(function(response){
                 defer.resolve(response.data);
             },function(response) {
@@ -61,10 +78,10 @@
             return defer.promise;
         }
         
-        function deleteTodo(todo){
+        function deleteProject(project){
             var defer = $q.defer();
 
-            $http.delete(apiUrl + 'projects/' + todo.id)
+            $http.delete(apiUrl + 'projects/' + project.projectId)
             .then(
               function(response) {
                 defer.resolve(response.data);

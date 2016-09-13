@@ -15,7 +15,6 @@
         vm.addStudent = addStudent;
         vm.addStudentModal = addStudentModal;
         vm.deleteStudent = deleteStudent;
-        vm.editStudent = editStudent;
 
         getStudents();
 
@@ -42,7 +41,6 @@
 
         function deleteStudent(student) {
           if (confirm("Are you sure you want to remove this student?")) {
-            // debugger;
             StudentFactory.delete(student).then(
               function() {
                 var index = vm.students.indexOf(student);
@@ -50,15 +48,6 @@
               }
             );
           }
-        }
-
-         function editStudent(student) {
-            // debugger;
-          StudentFactory.update(student).then(
-            function() {
-              student.edit = false;  
-            }
-          );
         }
     }
 })();

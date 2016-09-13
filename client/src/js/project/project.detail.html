@@ -1,1 +1,85 @@
-<h3>project detail!</h3>
+<div class="ui container">
+  <div class="ui card fluid">
+    <div class="content">
+      <div class="ui header orange label">Assign a Student</div>
+    </div>
+    <div class="content">
+      <h2>Select a Student</h2>
+      <div class="ui fluid action input">
+      <!-- add ng-options -->
+        <select name="" id="" class="ui dropdown fluid" ></select>
+        <button class="ui button primary" ng-click="">Assign</button>
+      </div>
+    </div>
+  </div>
+
+
+<!-- //////////////////////////////////////////////////// -->
+
+  <div class="ui card fluid">
+    <div class="content">
+      <div class="header">Assigned To</div>
+    </div>
+    <div class="content">
+      <table class="ui very basic celled striped table red">
+        <thead>
+          <tr>
+              <th class="wide five">Name</th>
+              <th class="wide five">Grade</th>
+          </tr>
+        </thead>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+<!-- //////////////////////////////////////////////////// -->
+
+  <div class="ui card fluid">
+    <div class="content">
+      <div class="header orange">Edit Project</div>
+    </div>
+    <div class="content">
+      <form class="ui form">        
+        <div class="two fields">
+          <div class="field">
+            <label for="">Name</label>
+            <input type="text" name="" placeholder="{{projectDetail.projectCurrent.name}}" ng-model="projectDetail.projectNew.name">
+          </div>
+          <div class="field">
+            <label for="">Description</label>
+            <input type="text" name="" placeholder="{{projectDetail.projectCurrent.description}}" ng-model="projectDetail.projectNew.description">
+          </div>
+        </div>
+        <button class="ui button teal" ng-click="projectDetail.editProject();">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="ui basic modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Project Information Changed
+  </div>
+  <div class="image content">
+    <div class="image">
+      <i class="archive icon"></i>
+    </div>
+    <div class="description">
+      <p>This project's information has been updated.</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="fluid ui inverted buttons">
+      <div class="ui ok green basic inverted button">
+        <i class="checkmark icon"></i>
+        Ok
+      </div>
+    </div>
+  </div>
+</div>
